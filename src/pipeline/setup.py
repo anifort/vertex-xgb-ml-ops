@@ -3,7 +3,7 @@ rom setuptools import setup
 setup(
     name='xgb pipeline example',
     version='0.1',
-    packages=[ ],
+    packages=[],
     url='',
     license='',
     author='aniftos',
