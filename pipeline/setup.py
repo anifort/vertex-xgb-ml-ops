@@ -1,4 +1,4 @@
-rom setuptools import setup
+from setuptools import setup
 
 setup(
     name='xgb pipeline example',
@@ -11,11 +11,7 @@ setup(
     description='',
 
     install_requires=[
-        'kfp==1.8.9',
-        
-    ],
-    
-    extras_require={   
-        'run': ['google-cloud-pipeline-components==0.2.0'],
-    },
+        'kfp==1.8.9',  
+        'google-cloud-pipeline-components==0.2.0',
+    ]
 )
