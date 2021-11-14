@@ -1,6 +1,6 @@
 # Run unit tests and code coverage
 - name: 'python:3.6-slim-jessie'
-  entrypoint: 'bash'
-  dir: 'tests'
-  args: ['run_tests.sh']
-  id: 'Tests'
+    entrypoint: 'bash'
+    dir: 'tests'
+    args: ['run_tests.sh']
+    id: 'Tests'
