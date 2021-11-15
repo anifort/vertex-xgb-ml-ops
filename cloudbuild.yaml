@@ -1,26 +1,11 @@
 steps:
 
-# Run unit tests and code coverage
-- name: 'python:3.6-slim-jessie'
-  entrypoint: 'bash'
-  dir: 'tests'
-  args: ['run_tests.sh']
-  id: 'Tests'
-
-# compile pipeline
-- name: 'python:3.7'
-  entrypoint: 'bash'
-  dir: 'pipeline'
-  args: ['pipeline_builder.sh', '${_PIPELINE_PATH}']
-  waitFor: ['Tests']
-  id: 'CompilePipeline'
-
 # run pipeline
 - name: 'python:3.7'
   entrypoint: 'bash'
   dir: 'pipeline'
   args: ['pipeline_runner.sh', '${_PIPELINE_PATH}', '${_LOCATION}', '${_PIPELINE_PARAMS}', '${_PIPELINE_NAME}', '${_PROJECT_ID}', '${_PIPELINE_ROOT}', '${_PIPELINE_RUN_NAME}']
-  waitFor: ['CompilePipeline']
+  #waitFor: ['CompilePipeline']
   id: 'RunPipeline'
 
 substitutions:
