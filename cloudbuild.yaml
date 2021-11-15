@@ -25,7 +25,7 @@ steps:
 
 substitutions:
   _PIPELINE_ROOT: gs://{$REPO_NAME}/{$SHORT_SHA}
-  _PIPELINE_PATH: gs://$REPO_NAME/$SHORT_SHA/pipeline.json
+  _PIPELINE_PATH: gs://{$REPO_NAME}/{$SHORT_SHA}/pipeline.json
   _LOCATION: us-central1
   _PIPELINE_NAME: my-test
   _PIPELINE_RUN_NAME: $SHORT_SHA
