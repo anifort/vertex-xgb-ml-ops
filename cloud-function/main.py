@@ -25,7 +25,7 @@ def pipeline_trigger(event, context):
         location = "us-central1",
         parameter_values = {"project_id":"feature-store-mars21","data_path":"gs://mortgage_dataset_files/mortgage-small.csv"})
 
-    status = pl.run(sync=True, service_account="pipelines-cloud-build@feature-store-mars21.iam.gserviceaccount.com")
+    status = pl.run(sync=False, service_account="pipelines-cloud-build@feature-store-mars21.iam.gserviceaccount.com")
     
     if(pl.has_failed):
         exit(1)
