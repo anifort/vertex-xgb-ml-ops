@@ -22,7 +22,7 @@ client.create_pipeline_version(
     url="https://storage.googleapis.com/$REPO_NAME/$COMMIT_SHA/pipeline.zip")
 
 '''
-def run_pipeline(pipeline_name, run_name, project_id, pl_root, pl_path, location, pipeline_params):
+def run_pipeline(pipeline_name, run_name, project_id, pl_root, pl_path, location, pipeline_params, service_account):
     pl = PipelineJob(
         enable_caching=True,
         display_name = pipeline_name,
@@ -33,7 +33,7 @@ def run_pipeline(pipeline_name, run_name, project_id, pl_root, pl_path, location
         location = location,
         parameter_values = pipeline_params)
 
-    status = pl.run(sync=True)
+    status = pl.run(sync=True, service_account=service_account)
     
     if(pl.has_failed):
         exit(1)
@@ -94,6 +94,11 @@ if __name__ == "__main__":
                         default="{}",
                         required=True,
                         help="json string of pipelines params")
+       
+    parser.add_argument("-sa", "--service_account",
+                        dest="service_account",
+                        required=True,
+                        help="")
 
     
     args = parser.parse_args()
@@ -107,4 +112,5 @@ if __name__ == "__main__":
         args.pipeline_root_uri,
         args.pipeline_gs_path,
         args.location,
-        json.loads(args.pipeline_params))
+        json.loads(args.pipeline_params),
+        args.service_account)
