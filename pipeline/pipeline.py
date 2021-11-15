@@ -5,7 +5,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 import kfp.v2 as kfp
 import kfp.v2.dsl as dsl
 from kfp.v2 import compiler
-from kfp.v2.google.client import AIPlatformClient
+
 from google_cloud_pipeline_components import aiplatform as gcc_aip
 
 from components.preprocessing import split_data

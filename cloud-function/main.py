@@ -1,5 +1,7 @@
 import base64
 
+from google.cloud.aiplatform.pipeline_jobs import PipelineJob
+
 def pipeline_trigger(event, context):
     """Triggered from a message on a Cloud Pub/Sub topic.
     Args:
