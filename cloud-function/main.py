@@ -24,7 +24,7 @@ def pipeline_trigger(event, context):
     pl = PipelineJob(
         enable_caching=True,
         display_name = "xgb-pipeline",
-        job_id = "schedule-run-a3b8252-"+str(currentDT.strftime("%Y%m%d%H%M%S")),
+        job_id = "schedule-run-a3b8252-"+str(context.timestamp),
         pipeline_root="gs://feature-store-mars21/vertex-xgb-ml-ops/a3b8252",
         template_path = "gs://feature-store-mars21/vertex-xgb-ml-ops/a3b8252/pipeline.json",
         project = "feature-store-mars21",
