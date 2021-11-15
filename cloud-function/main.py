@@ -1,6 +1,7 @@
 import base64
 
 from google.cloud.aiplatform.pipeline_jobs import PipelineJob
+import datetime
 
 def pipeline_trigger(event, context):
     """Triggered from a message on a Cloud Pub/Sub topic.
@@ -15,12 +16,15 @@ def pipeline_trigger(event, context):
     # read file from gcs
     # get configs from file and use the below
     
+    
+    currentDT = datetime.datetime.now()
+
     #pubsub_message = base64.b64decode(event['data']).decode('utf-8')
     #print(pubsub_message)
     pl = PipelineJob(
         enable_caching=True,
         display_name = "xgb-pipeline",
-        job_id = "schedule-run-a3b8252",
+        job_id = "schedule-run-a3b8252-"+str(currentDT.strftime("%Y%m%d%H%M%S")),
         pipeline_root="gs://feature-store-mars21/vertex-xgb-ml-ops/a3b8252",
         template_path = "gs://feature-store-mars21/vertex-xgb-ml-ops/a3b8252/pipeline.json",
         project = "feature-store-mars21",
