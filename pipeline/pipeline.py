@@ -63,20 +63,3 @@ def pipeline(
         dedicated_resources_min_replica_count=1
     )
     
-'''   
-compiler.Compiler().compile(
-    pipeline_func=pipeline,
-    package_path="pl.json"
-)
-
-
-from google.cloud.aiplatform.pipeline_jobs import PipelineJob
-
-pl = PipelineJob(display_name= 'xgb-job',
-        pipeline_root=""
-        template_path= "pl.json",
-        location='us-central1',
-        parameter_values={'project_id': 'feature-store-mars21', 
-                          'data_path': 'gs://mortgage_dataset_files/mortgage-small.csv'})
-
-pl.run(sync=False)'''
