@@ -12,7 +12,7 @@ steps:
   entrypoint: 'bash'
   dir: 'pipeline'
   args: ['pipeline_builder.sh', '${_PIPELINE_PATH}']
-  waitFor: ['Tests']
+  #waitFor: ['Tests']
   id: 'CompilePipeline'
 
 # run pipeline
