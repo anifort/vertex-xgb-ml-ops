@@ -38,5 +38,6 @@ if __name__ == "__main__":
                         help="gs:// path to export pipeline including the archived name and extension")
 
     args = parser.parse_args()
+    print(vars(args))
     compile()
     upload(args.destination)

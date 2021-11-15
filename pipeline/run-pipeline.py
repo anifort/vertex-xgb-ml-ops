@@ -99,7 +99,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
     
     
-    print(args.pipeline_params)
+    print(vars(args))
     run_pipeline(
         args.pipeline_name,
         args.run_name,
