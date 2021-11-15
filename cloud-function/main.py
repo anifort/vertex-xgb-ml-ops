@@ -22,7 +22,7 @@ def pipeline_trigger(event, context):
     pl = PipelineJob(
         enable_caching=True,
         display_name = "xgb-pipeline",
-        job_id = "schedule-run-a3b8252-"+"".join(e for e in str(context.timestamp) if e.isalnum()),
+        job_id = "schedule-run-a3b8252-"+"".join(e for e in str(context.timestamp) if e.isalnum()).lower(),
         pipeline_root="gs://feature-store-mars21/vertex-xgb-ml-ops/a3b8252",
         template_path = "gs://feature-store-mars21/vertex-xgb-ml-ops/a3b8252/pipeline.json",
         project = "feature-store-mars21",
