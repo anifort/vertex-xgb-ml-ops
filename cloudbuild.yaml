@@ -30,4 +30,4 @@ substitutions:
   _PIPELINE_NAME: ${REPO_NAME}
   _PIPELINE_RUN_NAME: ${SHORT_SHA}
   _PROJECT_ID: ${PROJECT_ID}
-  _PIPELINE_PARAMS: "'{\"project_id\": \"feature-store-mars21\",   \"data_path\": \"gs://mortgage_dataset_files/mortgage-small.csv\"}'"
+  _PIPELINE_PARAMS: '{\"project_id\": \"feature-store-mars21\", \"data_path\": \"gs://mortgage_dataset_files/mortgage-small.csv\"}'
