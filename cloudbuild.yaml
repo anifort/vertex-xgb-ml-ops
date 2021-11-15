@@ -11,7 +11,7 @@ steps:
 - name: 'python:3.7'
   entrypoint: 'bash'
   dir: 'pipeline'
-  args: ['pipeline_builder.sh', '$_PIPELINE_PATH']
+  args: ['pipeline_builder.sh', 'gs://{$REPO_NAME}/{$SHORT_SHA}/pipeline.json']
   #waitFor: ['Tests']
   id: 'CompilePipeline'
 
@@ -19,15 +19,15 @@ steps:
 - name: 'python:3.7'
   entrypoint: 'bash'
   dir: 'pipeline'
-  args: ['pipeline_runner.sh', '${_PIPELINE_PATH}', '${_LOCATION}', '${_PIPELINE_PARAMS}', '${_PIPELINE_NAME}', '${_PROJECT_ID}', '${_PIPELINE_ROOT}', '${_PIPELINE_RUN_NAME}']
+  args: ['pipeline_runner.sh', 'gs://{$REPO_NAME}/{$SHORT_SHA}/pipeline.json', '${_LOCATION}', '${_PIPELINE_PARAMS}', '$REPO_NAME', '$PROJECT_ID', 'gs://{$REPO_NAME}/{$SHORT_SHA}', '$SHORT_SHA']
   waitFor: ['CompilePipeline']
   id: 'RunPipeline'
 
 substitutions:
-  _PIPELINE_ROOT: "gs://{$REPO_NAME}/{$SHORT_SHA}"
-  _PIPELINE_PATH: "gs://{$REPO_NAME}/{$SHORT_SHA}/pipeline.json"
+  #_PIPELINE_ROOT: "gs://{$REPO_NAME}/{$SHORT_SHA}"
+  #_PIPELINE_PATH: "gs://{$REPO_NAME}/{$SHORT_SHA}/pipeline.json"
   _LOCATION: us-central1
-  _PIPELINE_NAME: my-test
-  _PIPELINE_RUN_NAME: $SHORT_SHA
-  _PROJECT_ID: $PROJECT_ID
+  #_PIPELINE_NAME: $REPO_NAME
+  #_PIPELINE_RUN_NAME: $SHORT_SHA
+  #_PROJECT_ID: $PROJECT_ID
   _PIPELINE_PARAMS: "'{\"project_id\": \"feature-store-mars21\",   \"data_path\": \"gs://mortgage_dataset_files/mortgage-small.csv\"}'"
