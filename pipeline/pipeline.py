@@ -23,8 +23,7 @@ def pipeline(
 ):
     
     prepro_op = split_data(data_path)
-    
-    
+      
     train_op = xgb_training(
         prepro_op.outputs['data_out_x_train'],
         prepro_op.outputs['data_out_y_train'],
@@ -50,11 +49,6 @@ def pipeline(
         artifact_uri=train_op.outputs["path"],
         serving_container_image_uri='us-docker.pkg.dev/vertex-ai/prediction/xgboost-cpu.1-4:latest'
     ).after(train_op)
-    
-    
-    #deploy_op = gcc_aip.ModelDeployOp(  
-    #    model=train_op.outputs["model"],
-    #)
     
     custom_model_deploy_op = gcc_aip.ModelDeployOp(
        endpoint=endpoint_create_op.outputs["endpoint"],

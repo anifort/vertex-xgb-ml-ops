@@ -5,9 +5,6 @@ from kfp.v2.dsl import (
 )
 from kfp import components
 
-def add(a: Output[Dataset], b:  Output[Dataset], c: str):
-    return 2
-
 @component( 
     packages_to_install=['argparse','pandas','xgboost','numpy','sklearn','fsspec','gcsfs'], 
     base_image='python:3.9',
