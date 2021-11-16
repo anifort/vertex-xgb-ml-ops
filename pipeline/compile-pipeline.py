@@ -7,7 +7,7 @@ from argparse import ArgumentParser
 
 pipeline_filename = 'pipeline.json'
 
-def compile():
+def compile(pipeline_filename):
     pipeline_function = pipeline.pipeline
      
     compiler.Compiler().compile(
@@ -39,5 +39,5 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
     print(vars(args))
-    compile()
-    upload(args.destination)
+    compile(args.destination)
+    #upload(args.destination)
