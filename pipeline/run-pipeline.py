@@ -24,7 +24,7 @@ client.create_pipeline_version(
 '''
 def run_pipeline(pipeline_name, run_name, project_id, pl_root, pl_path, location, pipeline_params, service_account):
     pl = PipelineJob(
-        enable_caching=True,
+        enable_caching=False,
         display_name = pipeline_name,
         job_id = run_name,
         pipeline_root=pl_root,

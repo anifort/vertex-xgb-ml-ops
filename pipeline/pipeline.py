@@ -29,7 +29,8 @@ def pipeline(
         prepro_op.outputs['data_out_y_train'],
         prepro_op.outputs['data_out_x_test'],
         prepro_op.outputs['data_out_y_test']
-    )
+    ).after(prepro_op)
+    
     train_op.set_cpu_limit('4')
     train_op.set_memory_limit('14Gi')
     #train_op.add_node_selector_constraint('cloud.google.com/gke-accelerator', 'nvidia-tesla-k80')
