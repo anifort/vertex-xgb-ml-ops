@@ -5,7 +5,8 @@ import os
 
 from argparse import ArgumentParser
 
-def compile(pipeline_filename='pipeline.json'):
+
+def compile(pipeline_filename):
     pipeline_function = pipeline.xgb_pipeline
      
     compiler.Compiler().compile(
@@ -14,7 +15,7 @@ def compile(pipeline_filename='pipeline.json'):
     )
 
 
-def upload(destination):
+def upload(destination, ):
     uri = destination[5:]
     uri_parts = uri.split("/")
     bucket_name = uri_parts[0]
@@ -29,6 +30,7 @@ example:
 python3 compile-pipeline.py -d gs://feature-store-mars21/test/pipeline.json
 '''
 if __name__ == "__main__":
+    
     parser = ArgumentParser()
     parser.add_argument("-d", "--dest",
                         dest="destination",
@@ -36,6 +38,9 @@ if __name__ == "__main__":
                         help="gs:// path to export pipeline including the archived name and extension")
 
     args = parser.parse_args()
-    print(vars(args))
-    compile()
-    upload(args.destination)
+    
+    
+    pipeline_filename='pipeline.json' 
+
+    compile(pipeline_filename)
+    upload(args.destination, pipeline_filename)
