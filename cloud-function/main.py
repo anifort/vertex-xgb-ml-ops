@@ -20,7 +20,7 @@ def pipeline_trigger(event, context):
     #pubsub_message = base64.b64decode(event['data']).decode('utf-8')
     #print(pubsub_message)
     pl = PipelineJob(
-        enable_caching=True,
+        enable_caching=False,
         display_name = "xgb-pipeline",
         job_id = "schedule-run-a3b8252-"+"".join(e for e in str(context.timestamp) if e.isalnum()).lower(),
         pipeline_root="gs://feature-store-mars21/vertex-xgb-ml-ops/a3b8252",
