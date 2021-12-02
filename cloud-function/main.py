@@ -22,9 +22,9 @@ def pipeline_trigger(event, context):
     pl = PipelineJob(
         enable_caching=False,
         display_name = "xgb-pipeline",
-        job_id = "schedule-run-a3b8252-"+"".join(e for e in str(context.timestamp) if e.isalnum()).lower(),
-        pipeline_root="gs://feature-store-mars21/vertex-xgb-ml-ops/a3b8252",
-        template_path = "gs://feature-store-mars21/vertex-xgb-ml-ops/a3b8252/pipeline.json",
+        job_id = "schedule-run-27db53d-"+"".join(e for e in str(context.timestamp) if e.isalnum()).lower(),
+        pipeline_root="gs://feature-store-mars21/vertex-xgb-ml-ops/27db53d",
+        template_path = "gs://feature-store-mars21/vertex-xgb-ml-ops/27db53d/pipeline.json",
         project = "feature-store-mars21",
         location = "us-central1",
         parameter_values = {"project_id":"feature-store-mars21","data_path":"gs://feature-store-mars21/mortgage_dataset_files/mortgage-small.csv"})
