@@ -16,7 +16,7 @@ from components.training import xgb_training
   name='xgb-pipeline',
   description='pipeline training an xgb model',
 )
-def pipeline(
+def xgb_pipeline(
     data_path: str,
     project_id: str,
     endpoint_name: str = 'xgb-ep'
