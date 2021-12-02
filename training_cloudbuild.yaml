@@ -22,6 +22,7 @@ steps:
   args: ['pipeline_runner.sh', '${_PIPELINE_PATH}', '${_LOCATION}', '${_PIPELINE_PARAMS}', '${_PIPELINE_NAME}', '${_PROJECT_ID}', '${_PIPELINE_ROOT}', '${_PIPELINE_RUN_NAME}', '${_SERVICE_ACCOUNT}']
   waitFor: ['CompilePipeline']
   id: 'RunPipeline'
+  timeout: 1800s
 
 
 
@@ -33,4 +34,4 @@ substitutions:
   _PIPELINE_NAME: ${REPO_NAME}
   _PIPELINE_RUN_NAME: build-${SHORT_SHA}
   _PROJECT_ID: ${PROJECT_ID}
-  _PIPELINE_PARAMS: "{\"project_id\":\"feature-store-mars21\",\"data_path\":\"gs://mortgage_dataset_files/mortgage-small.csv\"}"
+  _PIPELINE_PARAMS: "{\"project_id\":\"feature-store-mars21\",\"data_path\":\"gs://feature-store-mars21/mortgage_dataset_files/mortgage-small.csv\"}"

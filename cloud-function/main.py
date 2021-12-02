@@ -27,7 +27,7 @@ def pipeline_trigger(event, context):
         template_path = "gs://feature-store-mars21/vertex-xgb-ml-ops/a3b8252/pipeline.json",
         project = "feature-store-mars21",
         location = "us-central1",
-        parameter_values = {"project_id":"feature-store-mars21","data_path":"gs://mortgage_dataset_files/mortgage-small.csv"})
+        parameter_values = {"project_id":"feature-store-mars21","data_path":"gs://feature-store-mars21/mortgage_dataset_files/mortgage-small.csv"})
 
     pl.run(sync=False, service_account="pipelines-cloud-build@feature-store-mars21.iam.gserviceaccount.com")
    
