@@ -15,7 +15,7 @@ def compile(pipeline_filename):
     )
 
 
-def upload(destination, ):
+def upload(destination, pipeline_filename):
     uri = destination[5:]
     uri_parts = uri.split("/")
     bucket_name = uri_parts[0]
