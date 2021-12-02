@@ -27,7 +27,7 @@ steps:
 
 substitutions:
   _PIPELINE_ROOT: "gs://${PROJECT_ID}/${REPO_NAME}/${SHORT_SHA}"
-  _PIPELINE_PATH: "gs://${PROJECT_ID}/${REPO_NAME}/${SHORT_SHA}/pipeline.json"
+  _PIPELINE_PATH: "gs://${PROJECT_ID}/${REPO_NAME}/${SHORT_SHA}/training_pipeline.json"
   _SERVICE_ACCOUNT: "pipelines-cloud-build@feature-store-mars21.iam.gserviceaccount.com"
   _LOCATION: us-central1
   _PIPELINE_NAME: ${REPO_NAME}

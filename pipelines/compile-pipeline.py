@@ -6,7 +6,7 @@ import os
 from argparse import ArgumentParser
 
 def compile(pipeline_filename='pipeline.json'):
-    pipeline_function = pipeline.pipeline
+    pipeline_function = pipeline.xgb_pipeline
      
     compiler.Compiler().compile(
         pipeline_func=pipeline_function,
