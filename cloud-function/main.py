@@ -21,8 +21,8 @@ def pipeline_trigger(event, context):
     #print(pubsub_message)
     pl = PipelineJob(
         enable_caching=False,
-        display_name = "xgb-pipeline",
-        job_id = "schedule-run-27db53d-"+"".join(e for e in str(context.timestamp) if e.isalnum()).lower(),
+        display_name = "vertex-xgb-ml-ops",
+        job_id = "sr-vertex-xgb-ml-ops-27db53d-"+"".join(e for e in str(context.timestamp) if e.isalnum()).lower(),
         pipeline_root="gs://feature-store-mars21/vertex-xgb-ml-ops/27db53d",
         template_path = "gs://feature-store-mars21/vertex-xgb-ml-ops/27db53d/training_pipeline.json",
         project = "feature-store-mars21",
