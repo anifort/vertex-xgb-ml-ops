@@ -45,10 +45,12 @@ def deploy_model_xgb_pipeline(
         serving_container_image_uri='us-docker.pkg.dev/vertex-ai/prediction/xgboost-cpu.1-4:latest'
     ).after(model_op)
     
-    custom_model_deploy_op = gcc_aip.ModelDeployOp(
+    custom_model_deploy_op1 = gcc_aip.ModelDeployOp(
        endpoint=endpoint_create_op.outputs["endpoint"],
         model=model_upload_op.outputs["model"],
         dedicated_resources_machine_type="n1-standard-4",
-        dedicated_resources_min_replica_count=1
+        dedicated_resources_min_replica_count=1,
+        traffic_split={"0": 100}
     )
+    
     
