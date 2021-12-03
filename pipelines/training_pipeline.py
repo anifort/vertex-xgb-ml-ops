@@ -36,6 +36,7 @@ def xgb_pipeline(
     #train_op.add_node_selector_constraint('cloud.google.com/gke-accelerator', 'nvidia-tesla-k80')
     #train_op.set_gpu_limit(1)
     
+    '''
     ### Create endpoint
     endpoint_create_op = gcc_aip.EndpointCreateOp(
         project=project_id,
@@ -57,4 +58,4 @@ def xgb_pipeline(
         dedicated_resources_machine_type="n1-standard-4",
         dedicated_resources_min_replica_count=1
     )
-    
+    '''
