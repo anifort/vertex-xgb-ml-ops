@@ -7,9 +7,9 @@ from argparse import ArgumentParser
 
 
 def compile(pipeline, pipeline_filename):
-    if pipeline=='deploy-model'
+    if pipeline=='deploy-model':
         pipeline_function = pipeline.deploy_model_xgb_pipeline
-    else 
+    else:
         pipeline_function = pipeline.xgb_pipeline
      
     compiler.Compiler().compile(
