@@ -20,7 +20,7 @@ def deploy_model_xgb_pipeline(
     region: str,
     metadata_name: str,
     model_uri_path: str,
-    endpoint_name: str = 'xgb-ep'
+    endpoint_name: str
 ):
     
     model_op = metadata_model_search(

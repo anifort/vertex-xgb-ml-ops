@@ -32,6 +32,6 @@ substitutions:
   _SERVICE_ACCOUNT: "pipelines-cloud-build@feature-store-mars21.iam.gserviceaccount.com"
   _LOCATION: us-central1
   _PIPELINE_NAME: ${REPO_NAME}
-  _PIPELINE_RUN_NAME: deploy-${REPO_NAME}-${SHORT_SHA}
+  _PIPELINE_RUN_NAME: build-dm-${REPO_NAME}-${SHORT_SHA}
   _PROJECT_ID: ${PROJECT_ID}
-  _PIPELINE_PARAMS: "{\"project_id\":\"${PROJECT_ID}\",\"region\":\"us-central1\",\"metadata_name\":\"default\",\"model_uri_path\":\"gs://${PROJECT_ID}/${REPO_NAME}\"}"
+  _PIPELINE_PARAMS: "{\"project_id\":\"${PROJECT_ID}\",\"region\":\"us-central1\",\"metadata_name\":\"default\",\"model_uri_path\":\"gs://${PROJECT_ID}/${REPO_NAME}\",\"endpoint_name\":\"test-deploy-ep\"}"

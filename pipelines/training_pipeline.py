@@ -18,8 +18,7 @@ from components.training import xgb_training
 )
 def xgb_pipeline(
     data_path: str,
-    project_id: str,
-    endpoint_name: str = 'xgb-ep'
+    project_id: str
 ):
     
     prepro_op = split_data(data_path)
