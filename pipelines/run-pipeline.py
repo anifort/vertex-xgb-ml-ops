@@ -1,4 +1,3 @@
-import pipeline
 from argparse import ArgumentParser
 from google.cloud.aiplatform.pipeline_jobs import PipelineJob
 import json
