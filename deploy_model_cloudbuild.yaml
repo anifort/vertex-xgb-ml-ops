@@ -11,7 +11,7 @@ steps:
 - name: 'python:3.7'
   entrypoint: 'bash'
   dir: 'pipelines'
-  args: ['pipeline_builder.sh', '${_PIPELINE_PATH}', 'training']
+  args: ['pipeline_builder.sh', '${_PIPELINE_PATH}', 'deploy_model']
   waitFor: ['Tests']
   id: 'CompilePipeline'
 
@@ -27,11 +27,11 @@ steps:
 
 
 substitutions:
-  _PIPELINE_ROOT: "gs://${PROJECT_ID}/${REPO_NAME}/${SHORT_SHA}"
-  _PIPELINE_PATH: "gs://${PROJECT_ID}/${REPO_NAME}/${SHORT_SHA}/training_pipeline.json"
+  _PIPELINE_ROOT: "gs://${PROJECT_ID}/${REPO_NAME}"
+  _PIPELINE_PATH: "gs://${PROJECT_ID}/${REPO_NAME}/deploy_model_pipeline.json"
   _SERVICE_ACCOUNT: "pipelines-cloud-build@feature-store-mars21.iam.gserviceaccount.com"
   _LOCATION: us-central1
   _PIPELINE_NAME: ${REPO_NAME}
-  _PIPELINE_RUN_NAME: build-${REPO_NAME}-${SHORT_SHA}
+  _PIPELINE_RUN_NAME: deploy-${REPO_NAME}-${SHORT_SHA}
   _PROJECT_ID: ${PROJECT_ID}
-  _PIPELINE_PARAMS: "{\"project_id\":\"feature-store-mars21\",\"data_path\":\"gs://feature-store-mars21/mortgage_dataset_files/mortgage-small.csv\"}"
+  _PIPELINE_PARAMS: "{\"project_id\":\"${PROJECT_ID}\",\"region\":\"us-central1\",\"metadata_name\":\"default\",\"model_uri_path\":\"gs://${PROJECT_ID}/${REPO_NAME}\"}"

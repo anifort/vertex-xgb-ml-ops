@@ -1,13 +1,16 @@
 from kfp.v2 import compiler
-import pipeline
+import pipeline, deploy_model_pipeline
 from google.cloud import storage
 import os
 
 from argparse import ArgumentParser
 
 
-def compile(pipeline_filename):
-    pipeline_function = pipeline.xgb_pipeline
+def compile(pipeline, pipeline_filename):
+    if pipeline=='deploy-model'
+        pipeline_function = pipeline.deploy_model_xgb_pipeline
+    else 
+        pipeline_function = pipeline.xgb_pipeline
      
     compiler.Compiler().compile(
         pipeline_func=pipeline_function,
@@ -36,11 +39,16 @@ if __name__ == "__main__":
                         dest="destination",
                         required=True,
                         help="gs:// path to export pipeline including the archived name and extension")
+    
+    parser.add_argument("-pt", '--pipeline-type',
+                    choices=['training','deploy-model'],
+                    default='training',
+                    help='define pipeline type')
 
     args = parser.parse_args()
     
     
     pipeline_filename='pipeline.json' 
 
-    compile(pipeline_filename)
+    compile(args.pipeline, pipeline_filename)
     upload(args.destination, pipeline_filename)
