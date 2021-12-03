@@ -8,7 +8,7 @@ from argparse import ArgumentParser
 
 def compile(pipeline, pipeline_filename):
     if pipeline=='deploy-model':
-        pipeline_function = pipeline.deploy_model_xgb_pipeline
+        pipeline_function = deploy_model_pipeline.deploy_model_xgb_pipeline
     else:
         pipeline_function = pipeline.xgb_pipeline
      
@@ -50,5 +50,5 @@ if __name__ == "__main__":
     
     pipeline_filename='pipeline.json' 
 
-    compile(args.pipeline, pipeline_filename)
+    compile(args.pipeline_type, pipeline_filename)
     upload(args.destination, pipeline_filename)
