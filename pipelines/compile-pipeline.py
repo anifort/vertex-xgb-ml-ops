@@ -1,5 +1,5 @@
 from kfp.v2 import compiler
-import pipeline, deploy_model_pipeline
+import training_pipeline, deploy_model_pipeline
 from google.cloud import storage
 import os
 
@@ -10,7 +10,7 @@ def compile(pipeline, pipeline_filename):
     if pipeline=='deploy-model':
         pipeline_function = deploy_model_pipeline.deploy_model_xgb_pipeline
     else:
-        pipeline_function = pipeline.xgb_pipeline
+        pipeline_function = training_pipeline.xgb_pipeline
      
     compiler.Compiler().compile(
         pipeline_func=pipeline_function,
