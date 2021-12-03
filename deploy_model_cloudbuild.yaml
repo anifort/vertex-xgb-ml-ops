@@ -11,7 +11,7 @@ steps:
 - name: 'python:3.7'
   entrypoint: 'bash'
   dir: 'pipelines'
-  args: ['pipeline_builder.sh', '${_PIPELINE_PATH}', 'deploy_model']
+  args: ['pipeline_builder.sh', '${_PIPELINE_PATH}', 'deploy-model']
   waitFor: ['Tests']
   id: 'CompilePipeline'
 
