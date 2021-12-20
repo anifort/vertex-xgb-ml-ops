@@ -22,8 +22,8 @@ steps:
   args: ['pipeline_runner.sh', '${_PIPELINE_PATH}', '${_LOCATION}', '${_PIPELINE_PARAMS}', '${_PIPELINE_NAME}', '${_PROJECT_ID}', '${_PIPELINE_ROOT}', '${_PIPELINE_RUN_NAME}', '${_SERVICE_ACCOUNT}']
   waitFor: ['CompilePipeline']
   id: 'RunPipeline'
-  timeout: 1800s
 
+timeout: 1800s
 
 
 substitutions:
